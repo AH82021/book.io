@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+	<p> Books of <%= book.owner.name %>...</p>
+  <ul>
+  <tr>
+    <td>📖 Title: </td>
+    <td class="title"><%= book.title %></td>
+    <td>📖 Author: </td>
+    <td><%= book.author %></td>
+    
+    <td><%= book.genre %></td>
+    <td>📖  Status</td>
+    <td>This book is <%= book.read ? 'read! 😋' : 'not read yet! 😫' %></td>
+  </tr>
+</ul>
+</section>
+
+<%- include('../partials/footer') %>
