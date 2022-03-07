@@ -28,16 +28,14 @@
   <% } %>
 
   <h2>All the Books!</h2>
-	<ul>
+  <ol>
   <% books.forEach(book => { %>
-    <tr>
-      <td><%= book.title %></td>
-      <td><%= book.author %></td>
-      <td><a href="/books/<%= book._id %>">DETAILS</a></td>
-    </tr>
-    
+  
+      <li>Title: <%= book.title %> Author: <%= book.title %> <a href="/books/<%= book._id %>">More Info</a></li>
+
+
   <% }) %>
-  </ul>
+</ol>
 </section>
 
 <%- include('../partials/footer') %>
