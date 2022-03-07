@@ -3,7 +3,9 @@
   <% } %>
 </head>
 <body>
-  <nav>
+  <nav class="container nav_container">
+    <a href="/books">All Books</a>
+    <a href="/profiles">Add a book</a>
     <% if (user) { %>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
