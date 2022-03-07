@@ -30,8 +30,140 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  console.log("Show is working");
+  Book.findById(req.params.id)
+  .populate("owner")
+  .then(book => {
+    res.render('books/show', {
+      book,
+      title: "Book show"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/books')
+  })
+}
+function flipRead(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    book.read = !book.read
+    book.save()
+    .then(()=> {
+      res.redirect(`/books/${book._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/books')
+  })
+
+}
+
+function edit(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    res.render('books/edit', {
+      book,
+      title: "edit book"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/books')
+  })
+}
+
+function update(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    if (book.owner.equals(req.user.profile._id)) {
+      req.body.read = !!req.body.read
+      book.updateOne(req.body, {new: true})
+      .then(()=> {
+        res.redirect(`/books/${book._id}`)
+      })
+    } else {
+      throw new Error ('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/books`)
+  })
+}
+
+
+function deleteBook(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    if (book.owner.equals(req.user.profile._id)) {
+      book.delete()
+      .then(() => {
+        res.redirect('/books')
+      })
+    } else {
+      throw new Error ('🚫 Not authorized 🚫')
+    }   
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/books')
+  })
+}
+
+
+function review(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    res.render('books/review', {
+      book,
+      title: "Review book"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/books')
+  })
+}
+
+
+function createReview(req, res) {
+  Book.findById(req.params.id)
+  .then(book => {
+    if (book.owner.equals(req.user.profile._id)) {
+      req.body.read = !!req.body.read
+      book.reviews.push(req.body, {new: true})
+      book.save()
+      .then(()=> {
+        res.render('books/review', {
+          book,
+          title: "Reviw book"
+        })
+      })
+    } else {
+      throw new Error ('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/books`)
+  })
+}
+
+
+
+
 export {
 
   index,
-  create
+  create,
+  show,
+  flipRead,
+  edit,
+  update,
+  deleteBook,
+  review,
+  createReview
 }
