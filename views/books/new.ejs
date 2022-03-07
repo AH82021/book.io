@@ -1,12 +1,11 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-
 <section>
   <h1>Books! </h1>
   <% if (user) { %>
     <h2>Add a Book!</h2>
-    <form action="/books" method="POST">
+    <form action="/profiles/books" method="POST">
       <label>
         Title: 
         <input type="text" name="title" autocomplete="off">
@@ -30,14 +29,11 @@
   <h2>All the Books!</h2>
 	<ul>
   <% books.forEach(book => { %>
-    <tr>
-      <td><%= book.title %></td>
-      <td><%= book.author %></td>
-      <td><a href="/books/<%= book._id %>">DETAILS</a></td>
-    </tr>
-    
+    <li> <%= book.name %> is <%= book.read ? 'read' : 'not read' %></li>
   <% }) %>
   </ul>
 </section>
+
+
 
 <%- include('../partials/footer') %>

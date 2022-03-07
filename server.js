@@ -9,6 +9,7 @@ import methodOverride from 'method-override'
 import passport from 'passport'
 import { passUserToView } from "./middleware/middleware.js" 
 
+
 // connect to MongoDB with mongoose
 import('./config/database.js')
 
