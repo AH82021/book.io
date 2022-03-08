@@ -3,9 +3,20 @@
 
 
 
-<section>
-  <h1>Edit this Book </h1>
-    
+
+  <h1>Edit "<%= book.title %>" Book </h1>
+  <ul>
+    <td>📕 Title: </td>
+      <td class="title"><%= book.title %></td>
+      <td>✍️ Author: </td>
+      <td><%= book.author %></td>
+      <td> Genre: </td>
+      <td><%= book.genre %></td>
+      <td>📕 Status</td>
+    <td>This book is <%= book.read ? 'read! 😋' : 'not read yet! 😫' %>
+    </td>
+  </ul>
+  
     <form action="/books/<%= book._id %>?_method=PUT" method="POST">
       <label>
         Title: 

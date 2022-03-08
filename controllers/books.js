@@ -135,7 +135,7 @@ function createReview(req, res) {
   .then(book => {
     if (book.owner.equals(req.user.profile._id)) {
       req.body.read = !!req.body.read
-      book.reviews.push(req.body, {new: true})
+      book.review.push(req.body, {new: true})
       book.save()
       .then(()=> {
         res.render('books/review', {
@@ -156,8 +156,10 @@ function createReview(req, res) {
 function bookSearch(req,res) {
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}`)
   .then(response => {
+    console.log(response.data)
     res.redirect('/books',{
-      book:response.data
+      
+      // book:response.data
     })
   })
 }

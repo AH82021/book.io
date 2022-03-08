@@ -17,7 +17,7 @@ const bookSchema = new Schema({
     type: String,
     required: true,
   },
-  
+
   author:String,
   genre :String,
   read :Boolean,
@@ -27,7 +27,7 @@ const bookSchema = new Schema({
   link: { type: String },
   publisher: { type: String },
   publishedDate: { type: String },
-  reviews :[reviewSchema],
+  review :[reviewSchema],
   
   }, { timestamps: true 
 
