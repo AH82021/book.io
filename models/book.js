@@ -13,11 +13,20 @@ const reviewSchema = new Schema({
 })
 const bookSchema = new Schema({
 
-  title :String,
+  title: {
+    type: String,
+    required: true,
+  },
+  
   author:String,
   genre :String,
   read :Boolean,
   owner: {type: Schema.Types.ObjectId, ref: "Profile"},
+  description: { type: String },
+  image: { type: String },
+  link: { type: String },
+  publisher: { type: String },
+  publishedDate: { type: String },
   reviews :[reviewSchema],
   
   }, { timestamps: true 

@@ -1,41 +1,16 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-
-<section>
-  <h1>Books! </h1>
-  <% if (user) { %>
-    <h2>Add a Book!</h2>
-    <form action="/books" method="POST">
-      <label>
-        Title: 
-        <input type="text" name="title" autocomplete="off">
-      </label>
-      <label>
-        Author: 
-        <input type="text" name="author" autocomplete="off">
-      </label>
-      <label>
-        Genre: 
-        <input type="text" name="genre" autocomplete="off">
-      </label>
-      <label>
-        Read?
-        <input type="checkbox" name="read">
-      </label>
-      <button type="submit">Add book</button>
-    </form>
+<main>
+  <h1>Welcome to Book.io, <%= user ? user.profile.name : "Reader" %></h1>
+  <% if (user?.profile.avatar) { %>
+    <div>
+      <img
+        src="<%= user.profile.avatar %>"
+        alt="<%= user.profile.name %> avatar"
+      />
+    </div>
   <% } %>
-
-  <h2>All the Books!</h2>
-  <ol>
-  <% books.forEach(book => { %>
-  
-      <li>Title: <%= book.title %> Author: <%= book.title %> <a href="/books/<%= book._id %>">More Info</a></li>
-
-
-  <% }) %>
-</ol>
-</section>
+</main>
 
 <%- include('../partials/footer') %>

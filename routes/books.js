@@ -22,6 +22,8 @@ router.get('/:id/review', isLoggedIn, booksCtrl.review)
 
 router.post('/:id/review', booksCtrl.createReview)
 
+router.post('/books/search',booksCtrl.bookSearch)
+
 export {
   router
 }

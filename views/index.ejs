@@ -1,16 +1,11 @@
+
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
 
-<main>
-  <h1>Welcome to Book.io, <%= user ? user.profile.name : "Reader" %></h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
-    </div>
-  <% } %>
-</main>
+<div class="main-div">
+<h1 id="main-text" >WELCOME TO BOOK.IO</h1>
+</div>
+
+
 
 <%- include('./partials/footer') %>

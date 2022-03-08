@@ -1,11 +1,21 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
+
 <section>
   <h1>Books! </h1>
   <% if (user) { %>
+    <h2>All the Books!</h2>
+  <ol>
+  <% books.forEach(book => { %>
+  
+      <li>Title: <%= book.title %> Author: <%= book.title %> <a href="/books/<%= book._id %>">More Info</a></li>
+
+
+  <% }) %>
+</ol>
     <h2>Add a Book!</h2>
-    <form action="/profiles/books" method="POST">
+    <form action="/books" method="POST">
       <label>
         Title: 
         <input type="text" name="title" autocomplete="off">
@@ -24,16 +34,18 @@
       </label>
       <button type="submit">Add book</button>
     </form>
-  <% } %>
 
-  <h2>All the Books!</h2>
-	<ul>
-  <% books.forEach(book => { %>
-    <li> <%= book.name %> is <%= book.read ? 'read' : 'not read' %></li>
-  <% }) %>
-  </ul>
+    <h3>Need a book ? Use the book search to find your favorite book</h3>
+    <form class="" action="/books/search" method="POST">
+      <input  name="search",type="search" placeholder="Book Search" aria-label="Search">
+      <button class="" type="submit">Search</button>
+    </form>
+  <% } else {%> 
+ 
+    <h2>Please login to see your Books !</h2>
+    <% } %>
+ 
 </section>
-
 
 
 <%- include('../partials/footer') %>

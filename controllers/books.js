@@ -1,14 +1,15 @@
-import { raw } from "express";
+import { raw, response } from "express";
 import { Book } from "../models/book.js";
+import axios from "axios";
 
 
 function index(req, res) {
    Book.find({})
   .then(books => {
-    res.render('books/index', {
+    res.render('books/books', {
       books,
       title: "Book",
-       })
+     })
    })
   .catch(err => {
     console.log(err)
@@ -152,6 +153,15 @@ function createReview(req, res) {
   })
 }
 
+function bookSearch(req,res) {
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}`)
+  .then(response => {
+    res.redirect('/books',{
+      book:response.data
+    })
+  })
+}
+
 
 
 
@@ -165,5 +175,6 @@ export {
   update,
   deleteBook,
   review,
-  createReview
+  createReview,
+  bookSearch
 }
