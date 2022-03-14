@@ -18,7 +18,10 @@ const bookSchema = new Schema({
     required: true,
   },
 
-  author:String,
+  authors: {
+    type: Array,
+    required: true,
+  },
   genre :String,
   read :Boolean,
   owner: {type: Schema.Types.ObjectId, ref: "Profile"},

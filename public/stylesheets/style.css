@@ -41,8 +41,6 @@ main {
 
 
 
- 
-
 h1 {
   font-size: 3.6rem;
 }
@@ -108,16 +106,59 @@ nav > a {
   top: 50%;
   left: 50%;
   margin-top: -50px;
-  margin-left:-300px;
-  width: 50%;
+  margin-left:-600px;
+  width: 85%;
   height: 100px;
   color:goldenrod;
-  font-size: 4,2rem;
+  
+  
 
-
- }
+  }
 
 #main-text {
 
-  font-size: 6.6rem;
- }
+  font-size: 12rem;
+  }
+
+.items {
+  display: flex;
+  justify-content: space-evenly;
+
+      }
+
+      .bold-table {
+        border-collapse: collapse;
+        margin-left:auto; 
+        margin-right:auto;
+        font-size: 3.4em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .bold-table thead tr {
+      background-color: cornflowerblue;
+      color: #ffffff;
+      text-align: left;
+  }
+
+  
+.bold-table td {
+    padding: 24px 30px;
+    color: #ffffff;
+}
+
+.bold-table tbody tr {
+  border-bottom: thin solid #dddddd;
+}
+
+
+
+.bold-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+#head {
+text-align: center;
+font-size: 4.6rem;
+color:bisque;
+}

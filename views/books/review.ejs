@@ -20,10 +20,9 @@ method="POST"
 </select>
 <button type="submit">Add Review</button>
 </form>
-
-<% if (book.review) { %>
 <table>
-<thead>
+  <thead>
+<% if (book.review) { %>
   <tr>
     <th>Date</th>
     <th>Review</th>

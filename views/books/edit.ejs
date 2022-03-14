@@ -8,12 +8,12 @@
   <ul>
     <td>📕 Title: </td>
       <td class="title"><%= book.title %></td>
-      <td>✍️ Author: </td>
-      <td><%= book.author %></td>
+      <td>✍️ Author(s): </td>
+      <td><%= book.authors %></td>
       <td> Genre: </td>
       <td><%= book.genre %></td>
       <td>📕 Status</td>
-    <td>This book is <%= book.read ? 'read! 😋' : 'not read yet! 😫' %>
+    <td>Read <%= book.read ? 'Yes! 😋' : 'No! 😫' %>
     </td>
   </ul>
   
@@ -23,8 +23,8 @@
         <input type="text" name="title" autocomplete="off">
       </label>
       <label>
-        Author: 
-        <input type="text" name="author" autocomplete="off">
+        Author(s): 
+        <input type="text" name="authors" autocomplete="off">
       </label>
       <label>
         Genre: 

@@ -3,46 +3,65 @@
 
 <section>
 	<p> From the Book list of <%= book.owner.name %>📚 :</p>
-  <ul>
+<table class="bold-table">
+    <thead>
+        <tr>
+          <th>📕 Title: </th>
+            <th>✍️ Author(s): </th>
+            <th> Genre: </th>
+            <th>📕 Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.authors %></td>
+          <td><%= book.genre %></td>
+          <td>Read <%= book.read ? 'Yes 😋' : 'No! 😫' %></td>
+        </tr>
+    </tbody>
+</table>
+
   <tr>
-    <td>📕 Title: </td>
-    <td class="title"><%= book.title %></td>
-    <td>✍️ Author: </td>
-    <td><%= book.author %></td>
-    <td> Genre: </td>
-    <td><%= book.genre %></td>
-    <td>📕 Status</td>
-    <td>This book is <%= book.read ? 'read! 😋' : 'not read yet! 😫' %></td>
+  <div class="items">
     <% if (user) { %>
+      <td>
       <form 
         action="/books/<%= book._id %>/flip-read?_method=PATCH" 
-        method="POST"
-      >
-        <button class="btn" type="submit">
-          Make book <%= book.read ? 'not read 📕🥺' : 'read 📖 🎉' %>
+        method="POST">
+        <button class="btn btn-secondary btn-lg" type="submit">
+          Read: <%= book.read ? 'No📕🥺' : 'Yes 📖 🎉' %>
         </button> 
-        <!-- <% if (book.read) { %> 
-          <form action="/books/<%= book._id %>/review" method="POST">
-          <button class="btn" type="submit">Review this Book 📝</button>
-        </form> <% } %> -->
       </form>
-
+    </td>
     <% } %>
+    
+    
     <% if (book.owner.equals(user?.profile._id)) { %>
       <form action="/books/<%= book._id %>/edit" method="GET">
-        <button class="btn" type="submit">Edit this Book 🚧</button>
+        <button class="btn btn-warning btn-lg" type="submit">Edit this Book 🚧</button>
       </form>
+
+    
+
+    
+    
       <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
-        <button class="btn" type="submit">Delete this book ⛔️</button>
+        <button class="btn btn-danger btn-lg" type="submit">Delete this book ⛔️</button>
       </form>
+
+    
+      
         <form action="/books/<%= book._id %>/review" method="GET">
-          <button class="btn" type="submit">Review this book</button>
+          <button class="btn btn-primary btn-lg" type="submit">Review this book</button>
         </form>
+
+        
       
   
     <% } %>
   </tr>
-</ul>
+</div>
 </section>
 
 <%- include('../partials/footer') %>

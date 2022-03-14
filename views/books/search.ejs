@@ -1,0 +1,27 @@
+
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<div class="card" style="width: 30rem;">
+     <img class="card-img-top" src=<%= Book.items[0].volumeInfo.imageLinks.thumbnail %>>
+        <div class="card-body">
+           <h3 class="card-title"><%= Book.items[0].volumeInfo.title %></h3>
+           <p class="card-text"><%= Book.items[0].volumeInfo.description %></p>
+        </div>
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item">Author(s): <%= Book.items[0].volumeInfo.authors %></li>
+          <li class="list-group-item">Publisher: <%= Book.items[0].volumeInfo.publisher %></li>
+          <li class="list-group-item">Published Date: <%= Book.items[0].volumeInfo.publishedDate %></li>
+          </ul>
+      <div class="card-body">
+    <h3><a href="<%= Book.items[0].volumeInfo.previewLink %>" class="card-link">Preview</a></h3> 
+    <h2>Add a Book!</h2>
+    <form action="/books" method="POST"> </label>
+      <button type="submit">Add book</button></form>
+      
+    
+
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

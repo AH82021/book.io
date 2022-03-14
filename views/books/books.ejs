@@ -3,17 +3,32 @@
 
 
 <section>
-  <h1>Books! </h1>
   <% if (user) { %>
-    <h2>All the Books!</h2>
-  <ol>
-  <% books.forEach(book => { %>
+    <h1 id="head"><%= user ? user.profile.name : "Reader" %>'s Books</h1>
+    <table class="bold-table">
+      <thead>
+          <tr>
+            <th>📕 Title: </th>
+              <th>✍️ Author(s): </th>
+              <th> Genre: </th>
+              <th> Info: </th>
+              
+          </tr>
+      </thead>
+      <tbody>
+    
+      <% books.forEach(book => { %>
+        <tr>
+            <td><%= book.title %></td>
+            <td><%= book.authors %></td>
+            <td><%= book.genre %></td>
+            <td><a href="/books/<%= book._id %>">ℹ️</a></td>  
+          </tr>
+          <% }) %>
+      </tbody>
+  </table>
   
-      <li>Title: <%= book.title %> Author: <%= book.author %> <a href="/books/<%= book._id %>">More Info</a></li>
-
-
-  <% }) %>
-</ol>
+   <div class="items">
     <h2>Add a Book!</h2>
     <form action="/books" method="POST">
       <label>
@@ -21,7 +36,7 @@
         <input type="text" name="title" autocomplete="off">
       </label>
       <label>
-        Author: 
+        Author(s): 
         <input type="text" name="author" autocomplete="off">
       </label>
       <label>
@@ -34,10 +49,11 @@
       </label>
       <button type="submit">Add book</button>
     </form>
+  </div>
 
     <h3>Need a book ? Use the book search to find your favorite book</h3>
     <form class="" action="/books/search" method="POST">
-      <input  name="search",type="search" placeholder="Book Search" aria-label="Search">
+      <input  name="search" type="text" placeholder="Book Search" aria-label="Search">
       <button class="" type="submit">Search</button>
     </form>
   <% } else {%> 
@@ -47,22 +63,7 @@
  
 </section>
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+
 
 
 <%- include('../partials/footer') %>

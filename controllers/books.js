@@ -1,6 +1,7 @@
 import { raw, response } from "express";
 import { Book } from "../models/book.js";
 import axios from "axios";
+import "dotenv/config"
 
 
 function index(req, res) {
@@ -9,7 +10,7 @@ function index(req, res) {
     res.render('books/books', {
       books,
       title: "Book",
-     })
+   })
    })
   .catch(err => {
     console.log(err)
@@ -32,7 +33,6 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  console.log("Show is working");
   Book.findById(req.params.id)
   .populate("owner")
   .then(book => {
@@ -153,14 +153,23 @@ function createReview(req, res) {
   })
 }
 
-function bookSearch(req,res) {
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}`)
+// async  function  bookSearch(req,res) {
+//   const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=javascript&key=${process.env.KEY}`)
+
+//   console.log("data",response.data);
+//   console.log(process.env.KEY);
+  
+// }
+
+function bookSearch (req, res){
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}&key=${process.env.KEY}`)
   .then(response => {
-    console.log(response.data)
-    res.redirect('/books',{
+    res.render('books/search',{
+      Book: response.data,
+      title: "Search book",
       
-      // book:response.data
     })
+    
   })
 }
 
