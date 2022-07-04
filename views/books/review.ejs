@@ -31,19 +31,19 @@ method="POST"
   </tr>
 </thead>
 <tbody>
-  <% book.review.forEach(function(review) { %> 
-    <tr>
-      <td><%= review.createdAt.toLocaleDateString() %></td>
-      <td><%= review.content %></td>
-      <td><%= review.rating %></td> 
-    </tr> 
-  <% }) %>
+  <% if (book.review) { %>
+    <% book.review.forEach(function(review) { %> 
+      <tr>
+        <td><%= review.createdAt.toLocaleDateString() %></td>
+        <td><%= review.content %></td>
+        <td><%= review.rating %></td> 
+      </tr> 
+    <% }) %>
+  <% } %>
 </tbody>
 </table>
 <% } else { %>
 <h3>No Reviews Yet</h3>
 <% } %>
-
-
 
 <%- include('../partials/footer') %>

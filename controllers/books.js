@@ -1,4 +1,3 @@
-import { raw, response } from "express";
 import { Book } from "../models/book.js";
 import axios from "axios";
 import "dotenv/config"
@@ -135,8 +134,8 @@ function createReview(req, res) {
   .then(book => {
     if (book.owner.equals(req.user.profile._id)) {
       req.body.read = !!req.body.read
-      book.review.push(req.body, {new: true})
-      book.save()
+     book.review.push(req.body, {new: true})
+       book.save()
       .then(()=> {
         res.render('books/review', {
           book,
@@ -153,13 +152,7 @@ function createReview(req, res) {
   })
 }
 
-// async  function  bookSearch(req,res) {
-//   const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=javascript&key=${process.env.KEY}`)
 
-//   console.log("data",response.data);
-//   console.log(process.env.KEY);
-  
-// }
 
 function bookSearch (req, res){
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}&key=${process.env.KEY}`)

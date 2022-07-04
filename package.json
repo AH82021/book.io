@@ -1,29 +1,36 @@
 {
-  "name": "men_template",
-  "version": "0.2.0",
-  "private": true,
+  "name": "book.io",
+  "version": "1.0.0",
+  "description": "Book.io coming soon ...",
+  "main": "server.js",
   "type": "module",
-  "scripts": {
-    "start": "node ./bin/www.js"
+  "bin": {
+    "book.io": "bin/www.js"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AH82021/book.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AH82021/book.io/issues"
+  },
+  "homepage": "https://github.com/AH82021/book.io#readme",
   "dependencies": {
-    "axios": "^0.26.0",
-    "body-parser": "^1.19.2",
-    "cors": "^2.8.5",
-    "debug": "^4.3.3",
-    "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.3",
-    "express-session": "^1.17.2",
-    "googleapi": "^1.0.2",
-    "http-errors": "^2.0.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "method-override": "^3.0.0",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.4.2",
     "morgan": "^1.10.0",
-    "passport": "^0.5.2",
-    "passport-google-oauth20": "^2.0.0",
-    "query-string": "^7.1.1",
-    "request": "^2.88.2",
-    "url-parse": "^1.5.10"
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
